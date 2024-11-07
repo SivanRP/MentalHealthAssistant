@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Assistant</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Mental Health Assistant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/resources">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Mental Health Support Assistant</h1>
+
+        <div class="alert alert-info" role="alert">
+            This AI assistant provides general support and information. For immediate help or crisis situations, please contact emergency services or a mental health professional.
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Facial Expression Analysis</h2>
+                <div id="video-container">
+                    <img src="{{ url_for('video_feed') }}" id="video-feed" alt="Video feed unavailable">
+                </div>
+                <p id="emotion-status">Detected emotion: <span id="detected-emotion">None</span></p>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section mb-4">
+                    <h2>Voice Input</h2>
+                    <button id="recordButton" class="btn btn-primary btn-lg">Speak Your Concerns</button>
+                    <p id="voiceStatus" class="text-muted"></p>
+                </div>
+
+                <div class="input-section mb-4">
+                    <h2>Text Input</h2>
+                    <div class="input-group">
+                        <input type="text" id="textInput" class="form-control" placeholder="Type your thoughts or concerns here">
+                        <div class="input-group-append">
+                            <button id="submitText" class="btn btn-success">Get Support</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <h2>AI Response to Your Emotion</h2>
+                <pre id="emotion-response" class="response-box bg-light p-3 border rounded"></pre>
+            </div>
+        </div>
+
+        <h2>Response to Your Input</h2>
+        <pre id="response" class="response-box bg-light p-3 border rounded"></pre>
+
+        <footer class="text-center mt-4">
+            <p>&copy; 2024 Mental Health Assistant | Powered by AI</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
